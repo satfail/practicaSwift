@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: false)
 
         }else{
-            let alert = UIAlertController(title: "Bienvenido", message: "Error al hacer login", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Alerta!", message: "Error al hacer login", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continuar", style: .cancel, handler: nil))
         self.present(alert, animated: false)
         }
