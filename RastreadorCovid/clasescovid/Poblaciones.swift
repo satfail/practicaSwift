@@ -31,7 +31,7 @@ class Poblaciones: NSObject {
         //MARK: TODO
         // Meter el codigo postal a cada ciudad
         
-        guard let filepath = Bundle.main.path(forResource:"poblaciones", ofType: "csv")else{return}
+        guard let filepath = Bundle.main.path(forResource:"municipios_final", ofType: "csv")else{return}
         
         let importer = CSVImporter<[String: String]>(path: filepath,delimiter: ";")
         importer.startImportingRecords(structure: { (headerValues) -> Void in
@@ -48,12 +48,13 @@ class Poblaciones: NSObject {
                 print(record["Provincia"] as Any)
                 */
                 
-                let nombre = record["Poblacion"]! as String
-                let provincia = record["Provincia"]! as String
-                let lat = (record["Latitud"]! as NSString).doubleValue
-                let lon = (record["Longitud"]! as NSString).doubleValue
+                let nombre = record["poblacion"]! as String
+                let provincia = record["provincia"]! as String
+                let lat = (record["lat"]! as NSString).doubleValue
+                let lon = (record["lon"]! as NSString).doubleValue
+                let cp = record["codigopostal"]! as String
                 
-                let poblacion = Poblacion(nombre: nombre, provincia: provincia, cp: "", coordenadas:CLLocationCoordinate2D(latitude: lat, longitude: lon) )
+                let poblacion = Poblacion(nombre: nombre, provincia: provincia, cp: cp, coordenadas:CLLocationCoordinate2D(latitude: lat, longitude: lon) )
                 
                 self.lista.append(poblacion)
  
@@ -71,6 +72,19 @@ class Poblaciones: NSObject {
     
     func find(cp:String)-> Poblacion{
         return lista.first(where: {$0.cp == cp})!
+    }
+    
+    func findByProv(provincia:String)-> [Poblacion]{
+        var municipiosByProv = [Poblacion]()
+        
+        for poblacion in lista
+        {
+            if provincia == poblacion.provincia {
+                print("Found \(poblacion.nombre) in \(provincia)")
+                municipiosByProv.append(poblacion)
+            }
+        }
+        return municipiosByProv
     }
     
     func count() -> Int{

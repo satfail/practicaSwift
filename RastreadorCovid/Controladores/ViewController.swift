@@ -35,24 +35,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let poblaciones = Poblaciones()
-        poblaciones.loadPoblaciones()
-        let datosCovid = EstadisticasGenerales()
-        datosCovid.loadEstadisticas()
-        
-        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
+        if(segue.identifier == "segueLogin"){
+            // Variable a mandar
+            let emailSend = txtfEmail.text
 
-        // Variable a mandar
-        let emailSend = txtfEmail.text
-
-        // Variable que instancia el controlador al que queremos mandar
-        // la info, accedemos a su variable
-        let destinationVC = segue.destination as! BienvenidoViewController
-        destinationVC.email = emailSend
+            // Variable que instancia el controlador al que queremos mandar
+            // la info, accedemos a su variable
+            let destinationVC = segue.destination as! BienvenidoViewController
+            destinationVC.email = emailSend
+        }
     }
     
 

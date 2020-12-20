@@ -8,6 +8,9 @@
 
 import UIKit
 
+var poblaciones = Poblaciones()
+var datosCovid = EstadisticasGenerales()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,6 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //Cargar aqui los datos
+        
+
+        poblaciones = Poblaciones()
+        poblaciones.loadPoblaciones()
+        datosCovid = EstadisticasGenerales()
+        datosCovid.loadEstadisticas()
+        
+        
+        
+        
+        
         return true
     }
 

@@ -15,8 +15,10 @@ class Poblacion: NSObject {
     var provincia:String
     var cp: String
     var coordenadas : CLLocationCoordinate2D
-    //var imagen : UIImage
-    //var url : URL
+    var imagen : UIImage?
+    var web : URL?
+    var estadisticas: EstadisticasCovid?
+    var restricciones : Restricciones?
     
     init(nombre:String,provincia:String,cp:String,coordenadas:CLLocationCoordinate2D) {
         self.nombre = nombre

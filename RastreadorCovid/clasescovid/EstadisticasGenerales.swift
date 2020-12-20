@@ -69,8 +69,9 @@ class EstadisticasGenerales: NSObject {
     }
     
     func find(nombre:String)-> EstadisticasCovid{
-        return lista.first(where: {$0.provincia == nombre})!
+        return lista.last(where: {$0.provincia == nombre})!
     }
+    
     
     func count() -> Int{
         return lista.count
